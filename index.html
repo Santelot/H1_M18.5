@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+              if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M18.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+             <option value="45">45 minutos</option>
+              <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Dar la bienvenida y establecer el tono para la misión.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a combinar creatividad y estructura para crear una propuesta de investigación científica con el apoyo de la IA. ¡Prepárense para un reto interesante y productivo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo se sienten. Si están emocionados por este reto, golpeen suavemente las palmas de sus manos. Si necesitan un poco más de energía, den tres pasos rápidos en su lugar."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, juntemos nuestras manos en señal de agradecimiento por estar aquí, listos para aprender y construir algo significativo. ¡Gracias por asistir!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy trabajaremos en dos objetivos clave: 1. Aplicar técnicas avanzadas de prompting para estructurar una propuesta científica. 2. Crear un plan claro y lógico con la ayuda de la IA."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🖐️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Activar la concentración mediante un ejercicio de relajación visual.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a empezar con una actividad rápida para despejar la mente y preparar nuestra concentración. Froten sus manos con rapidez hasta que sientan calor, luego colóquenlas sobre sus ojos cerrados y disfruten de la sensación de relajación. Esto nos ayudará a enfocarnos mejor en la tarea de hoy."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Este ejercicio es excelente para relajar la vista y liberar cualquier tensión acumulada, especialmente después de trabajar con pantallas. Además, ayuda a calmar la mente y a enfocarnos en lo que sigue. ¡Muy buen trabajo, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Organizar a los estudiantes en equipos de dos.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta actividad trabajaremos en parejas. Encuentren a alguien con quien no hayan trabajado recientemente. ¡Tienen un minuto para organizarse!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+           <tr>
+               <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen a sus parejas listas, un representante de cada equipo puede pasar a recoger las Magic Tablets. ¡Tienen un minuto para hacerlo!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 36 minutos</div>
+        <div class="subtitle">Guiar a los estudiantes en la creación de una propuesta de investigación con IA.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Introducción al Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a utilizar nuestra creatividad y habilidades de prompting para estructurar una propuesta de investigación científica. Este desafío está diseñado en etapas para guiarlos paso a paso. Usaremos técnicas avanzadas como RTF y PAR para planificar y detallar cada sección de una propuesta sólida. ¡Es su momento para pensar como investigadores y crear un proyecto que deje huella!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 14 "Explicación del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El desafío de hoy es crear una propuesta de investigación científica bien estructurada. Identificarán un tema que les apasione, lo desarrollarán con la ayuda de ChatGPT y aplicarán las técnicas RTF y PAR para guiar a la IA. Trabajaremos en equipo y avanzaremos etapa por etapa, asegurándonos de que cada detalle de su propuesta sea claro, lógico y relevante. ¡Este es un reto que nos acercará a pensar como científicos!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Etapa 1: Selección del Tema".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para comenzar, elijan un tema científico que les interese investigar. Piensen en áreas como tecnología, medio ambiente, salud, o ciencias sociales, y busquen problemas relevantes en México o en el mundo. Usen la hoja de trabajo para hacer una lluvia de ideas y reflexionen sobre temas que puedan abordar con recursos disponibles. Investiguen brevemente cada opción para asegurarse de que sea viable y significativa. Finalmente, seleccionen un tema específico que puedan desarrollar en su propuesta."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (3 minutos):</strong> Proyectar Diapositiva 16 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+           </tr>
+            <tr>
+               <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 17 "Etapa 2: Técnicas de Prompting".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, vamos a explorar las técnicas RTF y PAR. La técnica RTF define un rol, una tarea específica y el formato esperado. Por otro lado, PAR se centra en identificar un problema, proponer acciones y definir resultados esperados. Combinando estas técnicas, lograremos estructurar nuestra propuesta de manera efectiva. Lean el material proporcionado para entender cómo estas herramientas pueden ayudarlos a guiar a la IA en el desarrollo de su propuesta."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 19 "Etapa 3: Prompt Combinado".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Con la comprensión de las técnicas, es hora de crear un prompt combinado. Definan el rol que asumirá la IA, como un asesor de investigación. Especifiquen la tarea: ayudarlos a preparar su propuesta. Determinen el formato que incluirá la introducción, metodología, resultados esperados, y referencias. Luego, incorporen el problema, las acciones planeadas y los resultados esperados para una estructura completa. Asegúrense de que el prompt sea claro y detallado para que la IA pueda proporcionar respuestas útiles y organizadas. Utilicen la plantilla proporcionada para estructurar su prompt."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 8 (5 minutos):</strong> Proyectar Diapositiva 20 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Etapa 4: Interacción con la IA".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen su prompt combinado, es momento de usarlo con ChatGPT. Introduzcan su prompt y revisen cuidadosamente las respuestas. Asegúrense de que la propuesta esté bien estructurada, incluyendo introducción, metodología, resultados esperados y referencias. Si algo no es claro o necesitan más detalles, hagan preguntas adicionales a la IA. Documenten todas las sugerencias y mejoras en las plantillas proporcionadas para construir una propuesta completa y profesional."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 10 (8 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Etapa 5: Desarrollo de la Propuesta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora trabajarán en el desarrollo detallado de su propuesta de investigación. Usen el esquema generado por la IA como base y compleméntenlo con su propia investigación. Asegúrense de cubrir los puntos clave: introducción, revisión de literatura, metodología, resultados esperados y referencias. Utilicen lenguaje técnico y claro, respaldando sus ideas con datos y fuentes confiables. Este paso es crucial para presentar una propuesta sólida y profesional."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (10 minutos):</strong> Proyectar Diapositiva 24 "Cronómetro".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Etapa 6: Revisión entre Pares".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Compartan su propuesta con un compañero y utilicen las guías de revisión para evaluar claridad, estructura y viabilidad. Lean con atención el trabajo de su compañero y ofrezcan sugerencias constructivas para mejorar la propuesta. Después, discutan las observaciones realizadas. Este paso es una oportunidad para recibir retroalimentación valiosa que les ayudará a perfeccionar su proyecto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (4 minutos):</strong> Proyectar Diapositiva 26 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Etapa 7: Revisión Final".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "En este último paso, tomen en cuenta las sugerencias que recibieron y hagan ajustes para mejorar la propuesta. Revisen la claridad de sus argumentos, corrijan errores y asegúrense de que todas las secciones estén completas. Una vez terminada, verifiquen que cumpla con los requisitos del formato y esté lista para ser presentada. Este es su momento para pulir los detalles y garantizar que su trabajo refleje su esfuerzo y aprendizaje."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 16 (2 minutos):</strong> Proyectar Diapositiva 28 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 17 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Revisión de Objetivos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos logrado grandes avances hoy: 1. Aplicamos técnicas avanzadas de prompting para estructurar una propuesta científica. 2. Creamos un proyecto claro y bien fundamentado con la ayuda de la IA. 3. Recibimos y dimos retroalimentación para mejorar nuestras ideas. ¡Gran trabajo, Genios! Este desafío les ha permitido desarrollar habilidades esenciales para el mundo de la investigación y la ciencia."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 18 (0.5 minutos):</strong> Proyectar Diapositiva 30 "You’ve Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, su esfuerzo y dedicación en este desafío han sido ejemplares. ¡Han ganado Mon-e por su compromiso y creatividad! Este reconocimiento refleja su capacidad para aplicar técnicas avanzadas y resolver problemas del mundo real. ¡Felicidades por su excelente trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor The Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Fomentar el respeto y la organización al finalizar la misión.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 31 "Honor The Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de cerrar nuestra misión, vamos a dedicar unos minutos para devolver el salón a su estado original. Por equipos, devuelvan las Magic Tablets y asegúrense de que todo esté limpio y en orden. Este simple gesto refuerza el respeto por nuestro entorno y por el trabajo en equipo. ¡Gracias por su compromiso!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
